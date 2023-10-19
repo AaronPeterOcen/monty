@@ -1,5 +1,11 @@
 0x19. C - Stacks, Queues - LIFO, FIFO
 
+<p align="center">
+  <img src="https://theme.zdassets.com/theme_assets/10239256/f69718478ae7ecaaae43d9f8aefd9638c313b55e.jpg"
+       alt="alx logo"
+  >
+</p>
+
 Tests
 We strongly encourage you to work all together on a set of tests
 
