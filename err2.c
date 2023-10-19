@@ -1,9 +1,5 @@
-/*
- * File: errors_2.c
- * Auth: Bennett Dixon
- *       Brennan D Baraban
- */
 #include "monty.h"
+
 int short_stack_error(unsigned int ln, char *op);
 int div_error(unsigned int ln);
 int pop_error(unsigned int ln);

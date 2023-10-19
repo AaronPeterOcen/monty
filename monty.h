@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
 
 #define STACK 0
 #define QUEUE 1
@@ -58,11 +62,11 @@ void mpint(stack_t **stk, unsigned int ln);
 void mpop(stack_t **stk, unsigned int ln);
 void mswap(stack_t **stk, unsigned int ln);
 
-void monty_add(stack_t **stk, unsigned int ln);
-void monty_sub(stack_t **stk, unsigned int ln);
-void monty_div(stack_t **stk, unsigned int ln);
-void monty_mul(stack_t **stk, unsigned int ln);
-void monty_mod(stack_t **stk, unsigned int ln);
+void madd(stack_t **stk, unsigned int ln);
+void msub(stack_t **stk, unsigned int ln);
+void mdiv(stack_t **stk, unsigned int ln);
+void mmul(stack_t **stk, unsigned int ln);
+void mmod(stack_t **stk, unsigned int ln);
 
 void monty_nop(stack_t **stack, unsigned int line_number);
 void monty_pchar(stack_t **stack, unsigned int line_number);

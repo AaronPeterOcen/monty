@@ -1,10 +1,4 @@
-/*
- * File: run_monty.c
- * Auth: Bennett Dixon
- *       Brennan D Baraban
- */
 #include "monty.h"
-#include <string.h>
 
 void free_tokens(void);
 unsigned int token_arr_len(void);
@@ -82,12 +76,12 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int)
 		{"pint", mpint},
 		{"pop", mpop},
 		{"swap", mswap},
-		{"add", monty_add},
+		{"add", madd},
 		{"nop", monty_nop},
-		{"sub", monty_sub},
-		{"div", monty_div},
-		{"mul", monty_mul},
-		{"mod", monty_mod},
+		{"sub", msub},
+		{"div", mdiv},
+		{"mul", mmul},
+		{"mod", mmod},
 		{"pchar", monty_pchar},
 		{"pstr", monty_pstr},
 		/*

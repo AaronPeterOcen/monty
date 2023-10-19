@@ -1,25 +1,20 @@
-/*
- * File: monty_funcs_2.c
- * Auth: Bennett Dixon
- *       Brennan D Baraban
- */
 #include "monty.h"
 
-void monty_add(stack_t **stk, unsigned int ln);
-void monty_sub(stack_t **stk, unsigned int ln);
-void monty_div(stack_t **stk, unsigned int ln);
-void monty_mul(stack_t **stk, unsigned int ln);
-void monty_mod(stack_t **stk, unsigned int ln);
+void madd(stack_t **stk, unsigned int ln);
+void msub(stack_t **stk, unsigned int ln);
+void mdiv(stack_t **stk, unsigned int ln);
+void mmul(stack_t **stk, unsigned int ln);
+void mmod(stack_t **stk, unsigned int ln);
 
 /**
- * monty_add - Adds the top two values of a stack_t linked list.
+ * madd - Adds the top two values of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  *
  * Description: The result is stored in the second value node
  *              from the top and the top value  is removed.
  */
-void monty_add(stack_t **stk, unsigned int ln)
+void madd(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
@@ -32,7 +27,7 @@ void monty_add(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_sub - Subtracts the second value from the top of
+ * msub - Subtracts the second value from the top of
  *             a stack_t linked list by the top value.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
@@ -40,7 +35,7 @@ void monty_add(stack_t **stk, unsigned int ln)
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void monty_sub(stack_t **stk, unsigned int ln)
+void msub(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
@@ -53,7 +48,7 @@ void monty_sub(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_div - Divides the second value from the top of
+ * mdiv - Divides the second value from the top of
  *             a stack_t linked list by the top value.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
@@ -61,7 +56,7 @@ void monty_sub(stack_t **stk, unsigned int ln)
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void monty_div(stack_t **stk, unsigned int ln)
+void mdiv(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
@@ -80,7 +75,7 @@ void monty_div(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_mul - Multiplies the second value from the top of
+ * mmul - Multiplies the second value from the top of
  *             a stack_t linked list by the top value.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
@@ -88,7 +83,7 @@ void monty_div(stack_t **stk, unsigned int ln)
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void monty_mul(stack_t **stk, unsigned int ln)
+void mmul(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
@@ -101,7 +96,7 @@ void monty_mul(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_mod - Computes the modulus of the second value from the
+ * mmod - Computes the modulus of the second value from the
  *             top of a stack_t linked list  by the top value.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
@@ -109,7 +104,7 @@ void monty_mul(stack_t **stk, unsigned int ln)
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void monty_mod(stack_t **stk, unsigned int ln)
+void mmod(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
