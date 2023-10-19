@@ -68,9 +68,9 @@ void mdiv(stack_t **stk, unsigned int ln);
 void mmul(stack_t **stk, unsigned int ln);
 void mmod(stack_t **stk, unsigned int ln);
 
-void monty_nop(stack_t **stack, unsigned int line_number);
-void monty_pchar(stack_t **stack, unsigned int line_number);
-void monty_pstr(stack_t **stack, unsigned int line_number);
+void mnop(stack_t **stk, unsigned int ln);
+void mpchar(stack_t **stk, unsigned int ln);
+void mpstr(stack_t **stk, unsigned int ln);
 
 void monty_rotl(stack_t **stack, unsigned int line_number);
 void monty_rotr(stack_t **stack, unsigned int line_number);
