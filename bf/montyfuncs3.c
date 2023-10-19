@@ -1,19 +1,7 @@
 #include "monty.h"
 
-void mnop(stack_t **stk, unsigned int ln);
 void mpchar(stack_t **stk, unsigned int ln);
 void mpstr(stack_t **stk, unsigned int ln);
-
-/**
- * mnop - Does absolutely nothing for the Monty opcode 'nop'.
- * @stk: A pointer to the top mode node of a stack_t linked list.
- * @ln: The current working line number of a Monty bytecodes file.
- */
-void mnop(stack_t **stk, unsigned int ln)
-{
-	(void)stk;
-	(void)ln;
-}
 
 /**
  * mpchar - Prints the character in the top value
