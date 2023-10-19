@@ -57,11 +57,11 @@ void monty_pint(stack_t **stk, unsigned int ln);
 void monty_pop(stack_t **stk, unsigned int ln);
 void monty_swap(stack_t **stk, unsigned int ln);
 
-void monty_add(stack_t **stack, unsigned int line_number);
-void monty_sub(stack_t **stack, unsigned int line_number);
-void monty_div(stack_t **stack, unsigned int line_number);
-void monty_mul(stack_t **stack, unsigned int line_number);
-void monty_mod(stack_t **stack, unsigned int line_number);
+void monty_add(stack_t **stk, unsigned int ln);
+void monty_sub(stack_t **stk, unsigned int ln);
+void monty_div(stack_t **stk, unsigned int ln);
+void monty_mul(stack_t **stk, unsigned int ln);
+void monty_mod(stack_t **stk, unsigned int ln);
 
 void monty_nop(stack_t **stack, unsigned int line_number);
 void monty_pchar(stack_t **stack, unsigned int line_number);
