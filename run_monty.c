@@ -90,10 +90,12 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int)
 		{"mod", monty_mod},
 		{"pchar", monty_pchar},
 		{"pstr", monty_pstr},
+		/*
 		{"rotl", monty_rotl},
 		{"rotr", monty_rotr},
 		{"stack", monty_stack},
 		{"queue", monty_queue},
+		*/
 		{NULL, NULL}
 	};
 	int i;
