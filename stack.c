@@ -1,3 +1,9 @@
+/*
+ * File: stack.c
+ * Auth: Bennett Dixon
+ *       Brennan D Baraban
+ */
+
 #include "monty.h"
 #include <string.h>
 
