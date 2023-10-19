@@ -53,7 +53,7 @@ int check_mode(stack_t *stack);
 void free_tokens(void);
 unsigned int token_arr_len(void);
 int run_monty(FILE *script_fd);
-void set_op_tok_error(int error_code);
+void set_op_error(int err_code);
 
 /* OPCODE FUNCTIONS */
 void mpush(stack_t **stk, unsigned int ln);

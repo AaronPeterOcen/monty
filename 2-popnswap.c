@@ -14,7 +14,7 @@ void mpop(stack_t **stk, unsigned int ln)
 
 	if ((*stk)->next == NULL)
 	{
-		set_op_tok_error(pop_error(ln));
+		set_op_error(pop_error(ln));
 		return;
 	}
 
@@ -36,7 +36,7 @@ void mswap(stack_t **stk, unsigned int ln)
 
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
-		set_op_tok_error(short_stack_error(ln, "swap"));
+		set_op_error(short_stack_error(ln, "swap"));
 		return;
 	}
 

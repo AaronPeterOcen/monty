@@ -28,19 +28,17 @@ void free_stack(stack_t **stack)
  */
 int init_stack(stack_t **stack)
 {
-	stack_t *st;
+	stack_t *s;
 
-	st = malloc(sizeof(stack_t));
-	if (st == NULL)
-	{
+	s = malloc(sizeof(stack_t));
+	if (s == NULL)
 		return (malloc_error());
-	}
 
-	st->n = STACK;
-	st->prev = NULL;
-	st->next = NULL;
+	s->n = STACK;
+	s->prev = NULL;
+	s->next = NULL;
 
-	*stack = st;
+	*stack = s;
 
 	return (EXIT_SUCCESS);
 }

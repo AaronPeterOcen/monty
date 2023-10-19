@@ -16,13 +16,13 @@ void mpush(stack_t **stk, unsigned int ln)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		set_op_tok_error(malloc_error());
+		set_op_error(malloc_error());
 		return;
 	}
 
 	if (op_toks[1] == NULL)
 	{
-		set_op_tok_error(no_int_error(ln));
+		set_op_error(no_int_error(ln));
 		return;
 	}
 
@@ -32,7 +32,7 @@ void mpush(stack_t **stk, unsigned int ln)
 			continue;
 		if (op_toks[1][i] < '0' || op_toks[1][i] > '9')
 		{
-			set_op_tok_error(no_int_error(ln));
+			set_op_error(no_int_error(ln));
 			return;
 		}
 	}

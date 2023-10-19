@@ -1,5 +1,11 @@
 #include <stdlib.h>
 
+char *get_int(int num);
+unsigned int _abs(int);
+int get_numbase_len(unsigned int num, unsigned int base);
+void fill_numbase_buff(unsigned int num, unsigned int base,
+		       char *buff, int buff_size);
+
 /**
  * get_int - gets a character pointer to new string containing int
  * @num: number to convert to string
@@ -9,28 +15,22 @@
 char *get_int(int num)
 {
 	unsigned int temp;
-	int len = 0;
-	long numlen = 0;
+	int length = 0;
+	long num_l = 0;
 	char *ret;
 
 	temp = _abs(num);
 	length = get_numbase_len(temp, 10);
 
-	if (num < 0 || numlen < 0)
-	{
-		len++;
-	}
-	ret = malloc(len + 1);
+	if (num < 0 || num_l < 0)
+		length++; /* negative sign */
+	ret = malloc(length + 1); /* create new string */
 	if (!ret)
-	{
 		return (NULL);
-	}
 
-	fill_numbase_buff(temp, 10, ret, len);
-	if (num < 0 || numlen < 0)
-	{
+	fill_numbase_buff(temp, 10, ret, length);
+	if (num < 0 || num_l < 0)
 		ret[0] = '-';
-	}
 
 	return (ret);
 }
@@ -44,9 +44,7 @@ char *get_int(int num)
 unsigned int _abs(int i)
 {
 	if (i < 0)
-	{
 		return (-(unsigned int)i);
-	}
 	return ((unsigned int)i);
 }
 

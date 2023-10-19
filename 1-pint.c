@@ -9,7 +9,7 @@ void mpint(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL)
 	{
-		set_op_tok_error(pint_error(ln));
+		set_op_error(pint_error(ln));
 		return;
 	}
 

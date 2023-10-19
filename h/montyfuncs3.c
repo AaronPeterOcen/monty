@@ -16,26 +16,6 @@ void mnop(stack_t **stk, unsigned int ln)
 }
 
 /**
- * mpstr - Prints the string contained in a stack_t linked list.
- * @stk: A pointer to the top mode node of a stack_t linked list.
- * @ln: The current working line number of a Monty bytecodes file.
- */
-void mpstr(stack_t **stk, unsigned int ln)
-{
-	stack_t *tmp = (*stk)->next;
-
-	while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
-	{
-		printf("%c", tmp->n);
-		tmp = tmp->next;
-	}
-
-	printf("\n");
-
-	(void)ln;
-}
-
-/**
  * mpchar - Prints the character in the top value
  *               node of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
@@ -55,4 +35,24 @@ void mpchar(stack_t **stk, unsigned int ln)
 	}
 
 	printf("%c\n", (*stk)->next->n);
+}
+
+/**
+ * mpstr - Prints the string contained in a stack_t linked list.
+ * @stk: A pointer to the top mode node of a stack_t linked list.
+ * @ln: The current working line number of a Monty bytecodes file.
+ */
+void mpstr(stack_t **stk, unsigned int ln)
+{
+	stack_t *tmp = (*stk)->next;
+
+	while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
+	{
+		printf("%c", tmp->n);
+		tmp = tmp->next;
+	}
+
+	printf("\n");
+
+	(void)ln;
 }
