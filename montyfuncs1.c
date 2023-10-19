@@ -5,18 +5,18 @@
  */
 #include "monty.h"
 
-void monty_push(stack_t **stk, unsigned int ln);
-void monty_pall(stack_t **stk, unsigned int ln);
-void monty_pint(stack_t **stk, unsigned int ln);
-void monty_pop(stack_t **stk, unsigned int ln);
-void monty_swap(stack_t **stk, unsigned int ln);
+void mpush(stack_t **stk, unsigned int ln);
+void mpall(stack_t **stk, unsigned int ln);
+void mpint(stack_t **stk, unsigned int ln);
+void mpop(stack_t **stk, unsigned int ln);
+void mswap(stack_t **stk, unsigned int ln);
 
 /**
- * monty_push - Pushes a value to a stack_t linked list.
+ * mpush - Pushes a value to a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  */
-void monty_push(stack_t **stk, unsigned int ln)
+void mpush(stack_t **stk, unsigned int ln)
 {
 	stack_t *tmp, *new;
 	int i = 0;
@@ -67,11 +67,11 @@ void monty_push(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_pall - Prints the values of a stack_t linked list.
+ * mpall - Prints the values of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  */
-void monty_pall(stack_t **stk, unsigned int ln)
+void mpall(stack_t **stk, unsigned int ln)
 {
 	stack_t *tmp = (*stk)->next;
 
@@ -84,11 +84,11 @@ void monty_pall(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_pint - Prints the top value of a stack_t linked list.
+ * mpint - Prints the top value of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  */
-void monty_pint(stack_t **stk, unsigned int ln)
+void mpint(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL)
 	{
@@ -101,11 +101,11 @@ void monty_pint(stack_t **stk, unsigned int ln)
 
 
 /**
- * monty_pop - Removes the top value element of a stack_t linked list.
+ * mpop - Removes the top value element of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  */
-void monty_pop(stack_t **stk, unsigned int ln)
+void mpop(stack_t **stk, unsigned int ln)
 {
 	stack_t *next = NULL;
 
@@ -123,11 +123,11 @@ void monty_pop(stack_t **stk, unsigned int ln)
 }
 
 /**
- * monty_swap - Swaps the top two value elements of a stack_t linked list.
+ * mswap - Swaps the top two value elements of a stack_t linked list.
  * @stk: A pointer to the top mode node of a stack_t linked list.
  * @ln: The current working line number of a Monty bytecodes file.
  */
-void monty_swap(stack_t **stk, unsigned int ln)
+void mswap(stack_t **stk, unsigned int ln)
 {
 	stack_t *tmp;
 
