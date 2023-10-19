@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
 
 #define STACK 0
 #define QUEUE 1
@@ -27,7 +31,6 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -46,29 +49,34 @@ typedef struct instruction_s
 void free_stack(stack_t **stack);
 int init_stack(stack_t **stack);
 int check_mode(stack_t *stack);
+
 void free_tokens(void);
 unsigned int token_arr_len(void);
 int run_monty(FILE *script_fd);
 void set_op_tok_error(int error_code);
 
 /* OPCODE FUNCTIONS */
-void monty_push(stack_t **stack, unsigned int line_number);
-void monty_pall(stack_t **stack, unsigned int line_number);
-void monty_pint(stack_t **stack, unsigned int line_number);
-void monty_pop(stack_t **stack, unsigned int line_number);
-void monty_swap(stack_t **stack, unsigned int line_number);
-void monty_add(stack_t **stack, unsigned int line_number);
-void monty_nop(stack_t **stack, unsigned int line_number);
-void monty_sub(stack_t **stack, unsigned int line_number);
-void monty_div(stack_t **stack, unsigned int line_number);
-void monty_mul(stack_t **stack, unsigned int line_number);
-void monty_mod(stack_t **stack, unsigned int line_number);
-void monty_pchar(stack_t **stack, unsigned int line_number);
-void monty_pstr(stack_t **stack, unsigned int line_number);
+void mpush(stack_t **stk, unsigned int ln);
+void mpall(stack_t **stk, unsigned int ln);
+void mpint(stack_t **stk, unsigned int ln);
+void mpop(stack_t **stk, unsigned int ln);
+void mswap(stack_t **stk, unsigned int ln);
+
+void madd(stack_t **stk, unsigned int ln);
+void msub(stack_t **stk, unsigned int ln);
+void mdiv(stack_t **stk, unsigned int ln);
+void mmul(stack_t **stk, unsigned int ln);
+void mmod(stack_t **stk, unsigned int ln);
+
+void mnop(stack_t **stk, unsigned int ln);
+void mpchar(stack_t **stk, unsigned int ln);
+void mpstr(stack_t **stk, unsigned int ln);
+/*
 void monty_rotl(stack_t **stack, unsigned int line_number);
 void monty_rotr(stack_t **stack, unsigned int line_number);
 void monty_stack(stack_t **stack, unsigned int line_number);
 void monty_queue(stack_t **stack, unsigned int line_number);
+*/
 
 /* CUSTOM STANDARD LIBRARY FUNCTIONS */
 char **strtow(char *str, char *delims);
@@ -77,13 +85,14 @@ char *get_int(int n);
 /* ERROR MESSAGES & ERROR CODES */
 int usage_error(void);
 int malloc_error(void);
-int f_open_error(char *filename);
-int unknown_op_error(char *opcode, unsigned int line_number);
-int no_int_error(unsigned int line_number);
-int pop_error(unsigned int line_number);
-int pint_error(unsigned int line_number);
-int short_stack_error(unsigned int line_number, char *op);
-int div_error(unsigned int line_number);
-int pchar_error(unsigned int line_number, char *message);
+int f_open_error(char *fn);
+int unknown_op_error(char *opcode, unsigned int ln);
+int no_int_error(unsigned int ln);
+
+int pop_error(unsigned int ln);
+int pint_error(unsigned int ln);
+int short_stack_error(unsigned int ln, char *op);
+int div_error(unsigned int ln);
+int pchar_error(unsigned int ln, char *msg);
 
 #endif /* __MONTY_H__ */
