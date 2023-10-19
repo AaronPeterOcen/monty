@@ -1,6 +1,17 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#define STACK 0
+#define QUEUE 1
+#define DELIMS " \n\t\a\b"
+
+/* GLOBAL OPCODE TOKENS */
+extern char **op_toks;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -30,5 +41,49 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/*INT FUNCS*/
+void free_stack(stack_t **stack);
+int init_stack(stack_t **stack);
+int check_mode(stack_t *stack);
+void free_tokens(void);
+unsigned int token_arr_len(void);
+int run_monty(FILE *script_fd);
+void set_op_tok_error(int error_code);
+
+/*FUNCS*/
+void montypush(stack_t **stack, unsigned int ln);
+void montypall(stack_t **stack, unsigned int ln);
+void montypint(stack_t **stack, unsigned int ln);
+void montypop(stack_t **stack, unsigned int ln);
+void montyswap(stack_t **stack, unsigned int ln);
+void montyadd(stack_t **stack, unsigned int ln);
+void montynop(stack_t **stack, unsigned int ln);
+void montysub(stack_t **stack, unsigned int ln);
+void montydiv(stack_t **stack, unsigned int ln);
+void montymul(stack_t **stack, unsigned int ln);
+void montymod(stack_t **stack, unsigned int ln);
+void montypchar(stack_t **stack, unsigned int ln);
+void montypstr(stack_t **stack, unsigned int ln);
+void montyrotl(stack_t **stack, unsigned int ln);
+void montyrotr(stack_t **stack, unsigned int ln);
+void montystack(stack_t **stack, unsigned int ln);
+void montyqueue(stack_t **stack, unsigned int ln);
+
+/*STD LIB FUNCS*/
+char **strtow(char *str, char *delims);
+char *get_int(int n)
+
+/*ERRORS*/
+int usage_error(void);
+int malloc_error(void);
+int f_open_error(char *filename);
+int unknown_op_error(char *opcode, unsigned int line_number);
+int no_int_error(unsigned int line_number);
+int pop_error(unsigned int line_number);
+int pint_error(unsigned int line_number);
+int short_stack_error(unsigned int line_number, char *op);
+int div_error(unsigned int line_number);
+int pchar_error(unsigned int line_number, char *message);
 
 #endif
