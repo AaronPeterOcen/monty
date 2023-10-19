@@ -1,32 +1,16 @@
-#ifndef _MONTY_H_
-#define _MONTY_H_
+#ifndef MONTY_H
+#define MONTY_H
 
-#define _POSIX_C_SOURCE 200809L
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <stdarg.h>
-#include <string.h>
-#include <ctype.h>
 
-/**
- * struct var - global variable representation
- * @holder: unassigned memory holder
- * @check: checks for the element to be assigned
- *
- **/
-typedef struct var
-{
-	int holder;
-	char check;
-} var_t;
+#define STACK 0
+#define QUEUE 1
+#define DELIMS " \n\t\a\b"
 
-extern var_t variables;
-var_t variables;
+/* GLOBAL OPCODE TOKENS */
+extern char **op_toks;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -35,14 +19,13 @@ var_t variables;
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
- *
- **/
+ * for stack, queues, LIFO, FIFO
+ */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
 } stack_t;
 
 /**
@@ -52,33 +35,56 @@ typedef struct stack_s
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
- *
- **/
+ */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int check_digit(char *token);
-void _tokenize(char *string, stack_t **stark, unsigned int line_num);
-void free_stark(stack_t **stark, unsigned int line_num);
-void _opcode(char *token, stack_t **stark, unsigned int line_num);
-void push(stack_t **stark, unsigned int line_num);
-void pall(stack_t **stark, unsigned int line_num);
-void pop(stack_t **stark, unsigned int line_num);
-void pint(stack_t **stark, unsigned int line_num);
-void nop(stack_t **stark, unsigned int line_num);
-void swap(stack_t **stark, unsigned int line_num);
-void add(stack_t **stark, unsigned int line_num);
-void sub(stack_t **stark, unsigned int line_num);
-void _div(stack_t **stark, unsigned int line_num);
-void mul(stack_t **stark, unsigned int line_num);
-void mod(stack_t **stark, unsigned int line_num);
-void pchar(stack_t **stark, unsigned int line_num);
-void pstr(stack_t **stark, __attribute__((unused)) unsigned int line_num);
-void rotl(stack_t **stark, __attribute__((unused))unsigned int linenum);
-void rotr(stack_t **stark, __attribute__((unused))unsigned int linenum);
-void _queue(stack_t **stark, unsigned int line_num);
+/*INT FUNCS*/
+void free_stack(stack_t **stack);
+int init_stack(stack_t **stack);
+int check_mode(stack_t *stack);
+void free_tokens(void);
+unsigned int token_arr_len(void);
+int run_monty(FILE *script_fd);
+void set_op_tok_error(int error_code);
 
-#endif /* MONTY */
+/*FUNCS*/
+void montypush(stack_t **stack, unsigned int ln);
+void montypall(stack_t **stack, unsigned int ln);
+void montypint(stack_t **stack, unsigned int ln);
+void montypop(stack_t **stack, unsigned int ln);
+void montyswap(stack_t **stack, unsigned int ln);
+void montyadd(stack_t **stack, unsigned int ln);
+void montynop(stack_t **stack, unsigned int ln);
+void montysub(stack_t **stack, unsigned int ln);
+void montydiv(stack_t **stack, unsigned int ln);
+void montymul(stack_t **stack, unsigned int ln);
+void montymod(stack_t **stack, unsigned int ln);
+void montypchar(stack_t **stack, unsigned int ln);
+void montypstr(stack_t **stack, unsigned int ln);
+void montyrotl(stack_t **stack, unsigned int ln);
+void montyrotr(stack_t **stack, unsigned int ln);
+void montystack(stack_t **stack, unsigned int ln);
+void montyqueue(stack_t **stack, unsigned int ln);
+
+/*STD LIB FUNCS*/
+char **strtow(char *str, char *delims);
+char *get_int(int n)
+
+/*ERRORS 1*/
+int usage_error(void);
+int malloc_error(void);
+int f_open_error(char *filename);
+int unknown_op_error(char *opcode, unsigned int ln);
+int no_int_error(unsigned int ln);
+/**/
+int pop_error(unsigned int ln);
+int pint_error(unsigned int ln);
+int short_stack_error(unsigned int ln, char *op);
+int div_error(unsigned int ln);
+int pchar_error(unsigned int ln, char *message);
+
+#endif
