@@ -13,13 +13,13 @@ void mdiv(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
-		set_op_error(short_stack_error(ln, "div"));
+		set_op_tok_error(short_stack_error(ln, "div"));
 		return;
 	}
 
 	if ((*stk)->next->n == 0)
 	{
-		set_op_error(div_error(ln));
+		set_op_tok_error(div_error(ln));
 		return;
 	}
 
@@ -40,7 +40,7 @@ void mmul(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
-		set_op_error(short_stack_error(ln, "mul"));
+		set_op_tok_error(short_stack_error(ln, "mul"));
 		return;
 	}
 

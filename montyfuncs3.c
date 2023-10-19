@@ -25,12 +25,12 @@ void mpchar(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL)
 	{
-		set_op_error(pchar_error(ln, "stack empty"));
+		set_op_tok_error(pchar_error(ln, "stack empty"));
 		return;
 	}
 	if ((*stk)->next->n < 0 || (*stk)->next->n > 127)
 	{
-		set_op_error(pchar_error(ln, "value out of range"));
+		set_op_tok_error(pchar_error(ln, "value out of range"));
 		return;
 	}
 

@@ -12,7 +12,7 @@ void madd(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
-		set_op_error(short_stack_error(ln, "add"));
+		set_op_tok_error(short_stack_error(ln, "add"));
 		return;
 	}
 
@@ -33,7 +33,7 @@ void msub(stack_t **stk, unsigned int ln)
 {
 	if ((*stk)->next == NULL || (*stk)->next->next == NULL)
 	{
-		set_op_error(short_stack_error(ln, "sub"));
+		set_op_tok_error(short_stack_error(ln, "sub"));
 		return;
 	}
 
